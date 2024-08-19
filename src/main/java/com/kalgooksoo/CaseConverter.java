@@ -67,34 +67,13 @@ class CaseConverter {
             boolean isUpper = isUpperCheckBox.isSelected();
             StringBuilder sb = new StringBuilder();
             for (String line : input.split("\n")) {
-                sb.append(camelToSnake(line, isUpper)).append("\n");
+                sb.append(Converter.camelToSnake(line, isUpper)).append("\n");
             }
             outputArea.setText(sb.toString());
         });
 
         jFrame.setVisible(true);
 
-    }
-
-    private static String camelToSnake(String camelCase, boolean isUpper) {
-        if (camelCase == null || camelCase.isEmpty()) {
-            return camelCase;
-        }
-
-        StringBuilder sb = new StringBuilder();
-        char[] chars = camelCase.toCharArray();
-
-        for (char c : chars) {
-            if (Character.isUpperCase(c)) {
-                if (sb.length() > 0) {
-                    sb.append('_');
-                }
-                sb.append(Character.toLowerCase(c));
-            } else {
-                sb.append(c);
-            }
-        }
-        return isUpper ? sb.toString().toUpperCase() : sb.toString();
     }
 
 }
